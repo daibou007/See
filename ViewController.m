@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MarqueeLabel.h"
+#import "EditorViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -47,17 +48,17 @@ alpha:(a)]
     [self.autoScrollLabel addGestureRecognizer:tapRecognizer];
     
     UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]
-                                           initWithTarget:self
-                                           action:@selector(handleSwipeUp)];
+                                         initWithTarget:self
+                                         action:@selector(handleSwipeUp)];
     swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
     [self.view addGestureRecognizer:swipeUp];
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]
-                                            initWithTarget:self
-                                            action:@selector(handleSwipeDown)];
+                                           initWithTarget:self
+                                           action:@selector(handleSwipeDown)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
-
+    
     
 }
 - (void)pauseTap:(UITapGestureRecognizer *)recognizer {
@@ -73,12 +74,13 @@ alpha:(a)]
 }
 
 -(void) handleSwipeUp{
-    
+    EditorViewController *editor = [[EditorViewController alloc] initWithData:self.autoScrollLabel];
+    [self presentViewController: editor animated:YES completion:nil];
     
 }
 
 -(void) handleSwipeDown{
-  
+    
     
 }
 
