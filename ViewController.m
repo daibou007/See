@@ -33,8 +33,9 @@ alpha:(a)]
     [super viewDidLoad];
     [self.view setBackgroundColor:UIColorFromRGB(0x339900)];
     
+//    [self.autoScrollLabel setBackgroundColor:UIColorFromRGB(0x0)];
     self.autoScrollLabel.marqueeType = MLContinuous;
-    [self.autoScrollLabel setFont:[UIFont systemFontOfSize:300]];
+    [self.autoScrollLabel setFont:[UIFont systemFontOfSize:350]];
     [self.autoScrollLabel setTextColor:UIColorFromRGB(0xFFFFFF)];
     self.autoScrollLabel.scrollDuration = 10.0f;
     self.autoScrollLabel.fadeLength = 10.0f;

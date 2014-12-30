@@ -32,6 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.inputTextView.delegate = self;
+    [self.inputTextView setText:self.autoScrollLabel.text];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] init];
+    tapGesture.numberOfTapsRequired = 1;
+    [tapGesture addTarget:self action:@selector(tapAction:)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,16 +47,54 @@
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    
+    [self animateTextField:YES];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
-    [self.autoScrollLabel setText:textView.text];
+    [self animateTextField:NO];
 }
 
 -(IBAction) okAction:(id)sender{
     [self.autoScrollLabel setText:self.inputTextView.text];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)animateTextField:(BOOL)up
+{
+    
+    const int movementDistance = 40;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    
+    [UIView setAnimationDuration: movementDuration];
+    
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        if (orientation == UIInterfaceOrientationLandscapeLeft) {
+            self.view.frame = CGRectOffset(self.view.frame,0, movement);
+        }else{
+            self.view.frame = CGRectOffset(self.view.frame,0, -movement);
+        }
+    }else{
+        if (orientation == UIInterfaceOrientationPortrait) {
+            self.view.frame = CGRectOffset(self.view.frame, movement,0);
+        }else{
+            self.view.frame = CGRectOffset(self.view.frame,  -movement,0);
+        }
+    }
+    [UIView commitAnimations];
+    
+}
+
+-(void)tapAction:(id)sender{
+    [self.inputTextView resignFirstResponder];
 }
 
 @end
