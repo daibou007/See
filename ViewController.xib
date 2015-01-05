@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
-                <outlet property="autoScrollLabel" destination="R8e-eq-wwc" id="mNR-a4-6Gc"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Y6O-Sp-nVA"/>
             </connections>
         </placeholder>
@@ -14,54 +13,9 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R8e-eq-wwc" customClass="MarqueeLabel">
-                    <rect key="frame" x="-31" y="-110" width="600" height="600"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="0.0" width="561" height="206"/>
-                    </variation>
-                </view>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="R8e-eq-wwc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0dW-TE-B17"/>
-                <constraint firstItem="R8e-eq-wwc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3TI-el-tq9"/>
-                <constraint firstAttribute="trailing" secondItem="R8e-eq-wwc" secondAttribute="trailing" id="EaB-HF-hvE"/>
-                <constraint firstItem="R8e-eq-wwc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LhE-oS-nth"/>
-                <constraint firstItem="R8e-eq-wwc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Osk-Cn-Ml7"/>
-                <constraint firstAttribute="bottom" secondItem="R8e-eq-wwc" secondAttribute="bottom" id="QPm-Ts-TTW"/>
-                <constraint firstAttribute="bottom" secondItem="R8e-eq-wwc" secondAttribute="bottom" id="dCC-MB-4rt"/>
-                <constraint firstAttribute="trailing" secondItem="R8e-eq-wwc" secondAttribute="trailing" id="rTa-Td-FvT"/>
-            </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="0dW-TE-B17"/>
-                    <exclude reference="3TI-el-tq9"/>
-                    <exclude reference="EaB-HF-hvE"/>
-                    <exclude reference="LhE-oS-nth"/>
-                    <exclude reference="Osk-Cn-Ml7"/>
-                    <exclude reference="QPm-Ts-TTW"/>
-                    <exclude reference="dCC-MB-4rt"/>
-                    <exclude reference="rTa-Td-FvT"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular">
-                <mask key="constraints">
-                    <include reference="3TI-el-tq9"/>
-                    <include reference="Osk-Cn-Ml7"/>
-                    <include reference="QPm-Ts-TTW"/>
-                    <include reference="rTa-Td-FvT"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=regular">
-                <mask key="constraints">
-                    <include reference="0dW-TE-B17"/>
-                    <include reference="EaB-HF-hvE"/>
-                    <include reference="LhE-oS-nth"/>
-                    <include reference="dCC-MB-4rt"/>
-                </mask>
-            </variation>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

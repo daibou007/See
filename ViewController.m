@@ -23,7 +23,7 @@ alpha:(a)]
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet  MarqueeLabel *autoScrollLabel;
+@property (strong, nonatomic) MarqueeLabel * autoScrollLabel;
 
 @end
 
@@ -32,21 +32,26 @@ alpha:(a)]
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:UIColorFromRGB(0x339900)];
-    
-//    [self.autoScrollLabel setBackgroundColor:UIColorFromRGB(0x0)];
-    self.autoScrollLabel.marqueeType = MLContinuous;
-    [self.autoScrollLabel setFont:[UIFont systemFontOfSize:350]];
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        self.autoScrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,0,1024,768)];
+    }else {
+        self.autoScrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,0,480,320)];
+    }
+    self.autoScrollLabel.marqueeType = MLRightLeft;
+    [self.autoScrollLabel setFont:[UIFont systemFontOfSize:250]];
     [self.autoScrollLabel setTextColor:UIColorFromRGB(0xFFFFFF)];
     self.autoScrollLabel.scrollDuration = 10.0f;
     self.autoScrollLabel.fadeLength = 10.0f;
     self.autoScrollLabel.trailingBuffer = 30.0f;
-    self.autoScrollLabel.text = @"See";
+    [self.autoScrollLabel setText:@"See"];
     
     self.autoScrollLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseTap:)];
     tapRecognizer.numberOfTapsRequired = 1;
     tapRecognizer.numberOfTouchesRequired = 1;
     [self.autoScrollLabel addGestureRecognizer:tapRecognizer];
+    
+    [self.view addSubview:self.autoScrollLabel];
     
     UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]
                                          initWithTarget:self

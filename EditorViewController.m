@@ -38,6 +38,12 @@
     tapGesture.numberOfTapsRequired = 1;
     [tapGesture addTarget:self action:@selector(tapAction:)];
     [self.view addGestureRecognizer:tapGesture];
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(handleSwipeDown)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeDown];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,9 +60,11 @@
     [self animateTextField:NO];
 }
 
--(IBAction) okAction:(id)sender{
+-(void) handleSwipeDown{
+    
     [self.autoScrollLabel setText:self.inputTextView.text];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)animateTextField:(BOOL)up
